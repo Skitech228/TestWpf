@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:cmd="clr-namespace:TestWpf.Infrostructure.Commands"
         xmlns:vm1="clr-namespace:TestWpf.ViewModels.Base"
+        xmlns:fa="http://schemas.fontawesome.com/icons/"
         Title="{Binding Path=Title}" Height="450" Width="800">
 
     <Window.DataContext>
@@ -37,6 +38,8 @@
             <TabItem>
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
+                        <!--Добавление иконки с помощью шрифра-->
+                        <fa:ImageAwesome Icon="Brands_BattleNet" Height="13" />
                         <TextBlock Text="Выход">
                             <TextBlock.InputBindings>
                                 <MouseBinding MouseAction="LeftClick">

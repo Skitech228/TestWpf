@@ -12,8 +12,7 @@ namespace TestWpf.ViewModels.Base
     {
         private string _Title = "Анимэ";
 
-        public MainWindowViewModel() =>
-                CloseAppCommand = new LambdaCommand(OnCloseAppCommandExecute, CanCloseAppCommandExecute);
+        public MainWindowViewModel() => CloseAppCommand = new LambdaCommand(OnCloseAppCommandExecute, CanCloseAppCommandExecute);
 
         /// <summary>
         ///     Заголовок окна
