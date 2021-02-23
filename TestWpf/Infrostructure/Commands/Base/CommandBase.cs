@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿#region Using derectives
+
+using System;
 using System.Windows.Input;
+
+#endregion
 
 namespace TestWpf.Infrostructure.Command.Base
 {
@@ -12,7 +12,7 @@ namespace TestWpf.Infrostructure.Command.Base
         public event EventHandler CanExecuteChanged
         {
             add => CommandManager.RequerySuggested += value;
-            remove=> CommandManager.RequerySuggested -= value;
+            remove => CommandManager.RequerySuggested -= value;
         }
 
         public abstract bool CanExecute(object parameter);

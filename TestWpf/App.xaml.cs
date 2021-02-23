@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿#region Using derectives
+
 using System.Windows;
+
+#endregion
 
 namespace TestWpf
 {
     /// <summary>
-    /// Логика взаимодействия для App.xaml
+    ///     Логика взаимодействия для App.xaml
     /// </summary>
-    public partial class App : Application
-    {
-    }
+    public partial class App : Application { }
 }

@@ -1,38 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿#region Using derectives
+
 using System.Windows;
 using System.Windows.Input;
 using TestWpf.Infrostructure.Commands;
 
+#endregion
+
 namespace TestWpf.ViewModels.Base
 {
-    class MainWindowViewModel:ViewModel
+    internal sealed class MainWindowViewModel : ViewModel
     {
-        public string _Title="Анимэ";
+        private string _Title = "Анимэ";
+
+        public MainWindowViewModel() =>
+                CloseAppCommand = new LambdaCommand(OnCloseAppCommandExecute, CanCloseAppCommandExecute);
 
         /// <summary>
-        /// Заголовок окна
+        ///     Заголовок окна
         /// </summary>
         public string Title
         {
             get => _Title;
 
-            set=>  Set(ref _Title, value);
+            set => Set(ref _Title, value);
         }
 
+        private ICommand CloseAppCommand { get; }
 
-        public ICommand CloseAppCommand { get; }
-        public bool CanCloseAppCommandExecute(object p) => true;
-        public void OnCloseAppCommandExecute(object p)
+        private static bool CanCloseAppCommandExecute(object p) => true;
+
+        private void OnCloseAppCommandExecute(object p)
         {
             Application.Current.Shutdown();
-        }
-        public MainWindowViewModel()
-        {
-            CloseAppCommand = new LambdaCommand(OnCloseAppCommandExecute, CanCloseAppCommandExecute);
         }
     }
 }

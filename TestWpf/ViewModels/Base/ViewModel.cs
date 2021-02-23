@@ -1,41 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#region Using derectives
+
+using System;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+
+#endregion
 
 namespace TestWpf.ViewModels.Base
 {
-    internal abstract class ViewModel:INotifyPropertyChanged,IDisposable
+    internal abstract class ViewModel : INotifyPropertyChanged, IDisposable
     {
+        private bool _disposed;
+
+        public void Dispose() => Dispose(true);
+
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public virtual void OnPropertyChanged([CallerMemberName] string PropertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
-        }
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null) =>
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-        protected virtual bool Set<T>(ref T field, T value, [CallerMemberName] string PropertyName = null)
+        protected virtual bool Set<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
         {
             if (Equals(field, value)) return false;
             field = value;
-            OnPropertyChanged(PropertyName);
+            OnPropertyChanged(propertyName);
+
             return true;
         }
 
-        private bool _Disposed;
-
-        public void Dispose() 
+        protected virtual void Dispose(bool disposing)
         {
-            Dispose(true);
-        }
-
-        public virtual void Dispose(bool Disposing)
-        {
-            if (!Disposing || _Disposed) return;
-            _Disposed = true;
+            if (!disposing || _disposed) return;
+            GC.Collect();
+            GC.SuppressFinalize(this);
+            _disposed = true;
         }
     }
 }

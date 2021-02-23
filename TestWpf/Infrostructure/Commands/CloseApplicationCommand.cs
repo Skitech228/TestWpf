@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿#region Using derectives
+
 using System.Windows;
 using TestWpf.Infrostructure.Command.Base;
+
+#endregion
 
 namespace TestWpf.Infrostructure.Commands
 {
