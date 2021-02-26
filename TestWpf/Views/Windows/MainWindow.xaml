@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:cmd="clr-namespace:TestWpf.Infrostructure.Commands"
+        xmlns:oxy="http://oxyplot.org/wpf"
         xmlns:vm1="clr-namespace:TestWpf.ViewModels.Base"
         xmlns:fa="http://schemas.fontawesome.com/icons/"
         Title="{Binding Path=Title}" Height="450" Width="800">
@@ -74,7 +75,13 @@
                     </Rectangle>
                 </Grid>
             </TabItem>
-            <TabItem />
+            <TabItem Height="22" VerticalAlignment="Top" Header="График" >
+                <oxy:Plot>
+                    <oxy:Plot.Series>
+                    <oxy:LineSeries Color="Red" InputScope="{Binding TestDataPoints}"/>
+                    </oxy:Plot.Series>
+                </oxy:Plot>
+            </TabItem>
         </TabControl>
     </DockPanel>
 </Window>
